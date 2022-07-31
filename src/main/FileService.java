@@ -12,8 +12,9 @@ import java.io.IOException;
  * @author Vladislav Konovalov
  */
 public final class FileService {
-    private static final String ENCRYPTED_FILE_NAME = "encrypted_file.bin";
-    private static final FileFilter FILTER = new FileNameExtensionFilter("Binary files", "bin");
+    private static final String ENCRYPTED_FILE_NAME = "encrypted_file";
+    private static final String ENCRYPTED_FILE_EXTENSION = "bin";
+    private static final String ENCRYPTED_FILE_DESCRIPTION = "Binary files";
     private static final String RESOURCES_ROOT = "src/main/resources/";
     private static final String FOLDER_ICON_PATH = RESOURCES_ROOT + "folder_icon.png";
     private static final String APP_ICON_PATH = RESOURCES_ROOT + "icon.png";
@@ -42,10 +43,10 @@ public final class FileService {
     }
 
     public static FileFilter getFilter() {
-        return FILTER;
+        return new FileNameExtensionFilter(ENCRYPTED_FILE_DESCRIPTION, ENCRYPTED_FILE_EXTENSION);
     }
 
-    public static String getEncryptedFileName() {
-        return ENCRYPTED_FILE_NAME;
+    public static String getEncryptedFileNameWithExtension() {
+        return ENCRYPTED_FILE_NAME + "." + ENCRYPTED_FILE_EXTENSION;
     }
 }
