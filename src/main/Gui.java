@@ -9,19 +9,19 @@ import javax.swing.*;
  */
 public final class Gui extends JFrame {
     private static final String PROGRAM_TITLE = "Cryptographer";
-    private static final Font MAIN_FONT = new Font("Arial", Font.PLAIN, 20);
+    private static final Font PRIMARY_FONT = new Font("Arial", Font.PLAIN, 20);
     private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 16);
 
     private final JLabel keyLabel = new JLabel("Key:");
     private final JLabel fileLabel = new JLabel("File:");
     private final JLabel fileNameLabel = new JLabel("No file selected");
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
-    private final JTextField keyTextField = new JTextField();
-    private final JFileChooser fileChooser = new JFileChooser();
     private final JButton chooseFileButton = new JButton(FileService.getFolderIcon());
-    private final JTextArea resultOrInputTextArea = new JTextArea();
     private final JButton codeButton = new JButton("code");
     private final JButton decodeButton = new JButton("decode");
+    private final JTextField keyTextField = new JTextField();
+    private final JTextArea resultOrInputTextArea = new JTextArea();
+    private final JFileChooser fileChooser = new JFileChooser();
 
     public Gui() throws HeadlessException {
         super(PROGRAM_TITLE);
@@ -40,17 +40,17 @@ public final class Gui extends JFrame {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        keyLabel.setFont(MAIN_FONT);
+        keyLabel.setFont(PRIMARY_FONT);
         container.add(keyLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        keyTextField.setFont(MAIN_FONT);
+        keyTextField.setFont(PRIMARY_FONT);
         container.add(keyTextField, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        fileLabel.setFont(MAIN_FONT);
+        fileLabel.setFont(PRIMARY_FONT);
         container.add(fileLabel, constraints);
 
         constraints.gridx = 0;
@@ -59,12 +59,12 @@ public final class Gui extends JFrame {
 
         constraints.gridx = 1;
         constraints.gridy = 3;
-        fileNameLabel.setFont(MAIN_FONT);
+        fileNameLabel.setFont(PRIMARY_FONT);
         container.add(fileNameLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 4;
-        resultOrInputLabel.setFont(MAIN_FONT);
+        resultOrInputLabel.setFont(PRIMARY_FONT);
         container.add(resultOrInputLabel, constraints);
 
         constraints.gridx = 0;
@@ -74,12 +74,12 @@ public final class Gui extends JFrame {
 
         constraints.gridx = 0;
         constraints.gridy = 6;
-        codeButton.setFont(MAIN_FONT);
+        codeButton.setFont(PRIMARY_FONT);
         container.add(codeButton, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 6;
-        decodeButton.setFont(MAIN_FONT);
+        decodeButton.setFont(PRIMARY_FONT);
         container.add(decodeButton, constraints);
 
         codeButton.addActionListener(e -> {
@@ -98,7 +98,7 @@ public final class Gui extends JFrame {
 
         chooseFileButton.addActionListener(e -> {
             fileChooser.setDialogTitle("Select encrypted file");
-            fileChooser.setFileFilter(Coder.getFilter());
+            fileChooser.setFileFilter(FileService.getFilter());
             int option = fileChooser.showOpenDialog(this);
             if (option == JFileChooser.APPROVE_OPTION) {
                 String fileName = fileChooser.getSelectedFile().getName();
