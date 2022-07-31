@@ -7,6 +7,11 @@ import javax.swing.*;
  * @author Vladislav Konovalov
  */
 public final class Gui extends JFrame {
+    private static final String RESOURCES_ROOT = "src/main/resources/";
+    private static final String FOLDER_ICON_PATH = RESOURCES_ROOT + "folder_icon.png";
+    private static final String APP_ICON_PATH = RESOURCES_ROOT + "icon.png";
+    private static final FileFilter FILTER = new FileNameExtensionFilter("Binary files", "bin");
+
     private final JLabel keyLabel = new JLabel("Key:");
     private final JLabel fileLabel = new JLabel("File:");
     private final JLabel fileNameLabel = new JLabel("No file selected");
@@ -21,6 +26,8 @@ public final class Gui extends JFrame {
         super("Cryptographer");
         this.setBounds(0, 0, 500, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setIconImage(FileService.getImage(APP_ICON_PATH));
 
         Container container = this.getContentPane();
         init(container);
