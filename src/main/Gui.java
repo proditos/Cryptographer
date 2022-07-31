@@ -3,8 +3,6 @@ package main;
 import java.awt.*;
 import java.io.File;
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author Vladislav Konovalov
@@ -21,7 +19,7 @@ public final class Gui extends JFrame {
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
     private final JTextField keyTextField = new JTextField();
     private final JFileChooser fileChooser = new JFileChooser();
-    private final JButton chooseFileButton = new JButton(new ImageIcon(FOLDER_ICON_PATH));
+    private final JButton chooseFileButton = new JButton(FileService.getFolderIcon());
     private final JTextArea resultOrInputTextArea = new JTextArea();
     private final JButton codeButton = new JButton("code");
     private final JButton decodeButton = new JButton("decode");
@@ -31,7 +29,7 @@ public final class Gui extends JFrame {
         this.setBounds(0, 0, 500, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setIconImage(FileService.getImage(APP_ICON_PATH));
+        this.setIconImage(FileService.getApplicationImage());
 
         Container container = this.getContentPane();
         initContainer(container);
@@ -93,7 +91,7 @@ public final class Gui extends JFrame {
 
         chooseFileButton.addActionListener(e -> {
             fileChooser.setDialogTitle("Select encrypted file");
-            fileChooser.setFileFilter(FILTER);
+            fileChooser.setFileFilter(Coder.getFilter());
             int option = fileChooser.showOpenDialog(this);
             if (option == JFileChooser.APPROVE_OPTION) {
                 String fileName = fileChooser.getSelectedFile().getName();
