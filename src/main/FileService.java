@@ -14,7 +14,7 @@ import java.io.IOException;
 public final class FileService {
     private static final String ENCRYPTED_FILE_NAME = "encrypted_file";
     private static final String ENCRYPTED_FILE_EXTENSION = "bin";
-    private static final String ENCRYPTED_FILE_DESCRIPTION = "Binary files";
+    private static final String ENCRYPTED_FILE_DESCRIPTION = "Binary file";
     private static final String RESOURCES_ROOT = "src/main/resources/";
     private static final String FOLDER_ICON_PATH = RESOURCES_ROOT + "folder_icon.png";
     private static final String APP_ICON_PATH = RESOURCES_ROOT + "icon.png";
