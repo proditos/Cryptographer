@@ -1,7 +1,10 @@
 package main;
 
 import java.awt.*;
+import java.io.File;
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author Vladislav Konovalov
@@ -18,6 +21,7 @@ public final class Gui extends JFrame {
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
     private final JTextField keyTextField = new JTextField();
     private final JFileChooser fileChooser = new JFileChooser();
+    private final JButton chooseFileButton = new JButton(new ImageIcon(FOLDER_ICON_PATH));
     private final JTextArea resultOrInputTextArea = new JTextArea();
     private final JButton codeButton = new JButton("code");
     private final JButton decodeButton = new JButton("decode");
@@ -30,11 +34,48 @@ public final class Gui extends JFrame {
         this.setIconImage(FileService.getImage(APP_ICON_PATH));
 
         Container container = this.getContentPane();
-        init(container);
+        initContainer(container);
     }
 
-    private void init(Container container) {
-        container.setLayout(new GridLayout(7, 1));
+    private void initContainer(Container container) {
+        container.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        container.add(keyLabel, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        container.add(keyTextField, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        container.add(fileLabel, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        container.add(chooseFileButton, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        container.add(fileNameLabel, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        container.add(resultOrInputLabel, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        container.add(resultOrInputTextArea, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 6;
+        container.add(codeButton, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 6;
+        container.add(decodeButton, constraints);
 
         codeButton.addActionListener(e -> {
             String input = resultOrInputTextArea.getText();
@@ -43,20 +84,25 @@ public final class Gui extends JFrame {
         });
 
         decodeButton.addActionListener(e -> {
-            String fullFileName = fileChooser.getSelectedFile().getAbsolutePath();
+            File selectedFile = fileChooser.getSelectedFile();
+            String fullFileName = (selectedFile == null) ? (null) : (selectedFile.getAbsolutePath());
             String key = keyTextField.getText();
             String result = Coder.decodeFromFile(fullFileName, key);
             resultOrInputTextArea.setText(result);
         });
 
-        container.add(keyLabel);
-        container.add(keyTextField);
-        container.add(fileLabel);
-        container.add(fileChooser);
-        container.add(fileNameLabel);
-        container.add(resultOrInputLabel);
-        container.add(resultOrInputTextArea);
-        container.add(codeButton);
-        container.add(decodeButton);
+        chooseFileButton.addActionListener(e -> {
+            fileChooser.setDialogTitle("Select encrypted file");
+            fileChooser.setFileFilter(FILTER);
+            int option = fileChooser.showOpenDialog(this);
+            if (option == JFileChooser.APPROVE_OPTION) {
+                String fileName = fileChooser.getSelectedFile().getName();
+                fileName += " is selected";
+                fileNameLabel.setText(fileName);
+            } else {
+                fileChooser.setSelectedFile(null);
+                fileNameLabel.setText("No file selected");
+            }
+        });
     }
 }
