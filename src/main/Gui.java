@@ -8,10 +8,9 @@ import javax.swing.*;
  * @author Vladislav Konovalov
  */
 public final class Gui extends JFrame {
-    private static final String RESOURCES_ROOT = "src/main/resources/";
-    private static final String FOLDER_ICON_PATH = RESOURCES_ROOT + "folder_icon.png";
-    private static final String APP_ICON_PATH = RESOURCES_ROOT + "icon.png";
-    private static final FileFilter FILTER = new FileNameExtensionFilter("Binary files", "bin");
+    private static final String PROGRAM_TITLE = "Cryptographer";
+    private static final Font MAIN_FONT = new Font("Arial", Font.PLAIN, 20);
+    private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 16);
 
     private final JLabel keyLabel = new JLabel("Key:");
     private final JLabel fileLabel = new JLabel("File:");
@@ -25,7 +24,7 @@ public final class Gui extends JFrame {
     private final JButton decodeButton = new JButton("decode");
 
     public Gui() throws HeadlessException {
-        super("Cryptographer");
+        super(PROGRAM_TITLE);
         this.setBounds(0, 0, 500, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -41,14 +40,17 @@ public final class Gui extends JFrame {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
+        keyLabel.setFont(MAIN_FONT);
         container.add(keyLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
+        keyTextField.setFont(MAIN_FONT);
         container.add(keyTextField, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
+        fileLabel.setFont(MAIN_FONT);
         container.add(fileLabel, constraints);
 
         constraints.gridx = 0;
@@ -57,22 +59,27 @@ public final class Gui extends JFrame {
 
         constraints.gridx = 1;
         constraints.gridy = 3;
+        fileNameLabel.setFont(MAIN_FONT);
         container.add(fileNameLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 4;
+        resultOrInputLabel.setFont(MAIN_FONT);
         container.add(resultOrInputLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 5;
+        resultOrInputTextArea.setFont(SECONDARY_FONT);
         container.add(resultOrInputTextArea, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 6;
+        codeButton.setFont(MAIN_FONT);
         container.add(codeButton, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 6;
+        decodeButton.setFont(MAIN_FONT);
         container.add(decodeButton, constraints);
 
         codeButton.addActionListener(e -> {
