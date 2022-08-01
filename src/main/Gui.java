@@ -26,6 +26,7 @@ public final class Gui extends JFrame {
     private final JTextField keyTextField = new JTextField();
     private final JTextArea resultOrInputTextArea = new JTextArea(15, 25);
     private final JFileChooser fileChooser = new JFileChooser();
+    private final JScrollPane scrollPane = new JScrollPane(resultOrInputTextArea);
 
     public Gui() throws HeadlessException {
         super(PROGRAM_TITLE);
@@ -96,7 +97,7 @@ public final class Gui extends JFrame {
         constraints.insets = new Insets(0, 20, 10, 20);
         resultOrInputTextArea.setFont(SECONDARY_FONT);
         resultOrInputTextArea.setMargin(new Insets(5, 5, 5, 5));
-        container.add(resultOrInputTextArea, constraints);
+        container.add(scrollPane, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 6;
