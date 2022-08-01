@@ -1,5 +1,6 @@
 package main;
 
+import main.encoder.*;
 import java.awt.*;
 import java.io.File;
 import javax.swing.*;
@@ -8,6 +9,7 @@ import javax.swing.*;
  * @author Vladislav Konovalov
  */
 public final class Gui extends JFrame {
+    private static final Encoder ENCODER = EncoderFactory.getEncoder(EncoderType.XOR);
     private static final String PROGRAM_TITLE = "Cryptographer";
     private static final Font PRIMARY_FONT = new Font("Arial", Font.PLAIN, 20);
     private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 16);
@@ -116,14 +118,16 @@ public final class Gui extends JFrame {
         codeButton.addActionListener(e -> {
             String input = resultOrInputTextArea.getText();
             String key = keyTextField.getText();
-            Coder.codeIntoFile(input, key);
+            String result = ENCODER.encode(input, key);
+            FileService.writeToFile(result.getBytes());
         });
 
         decodeButton.addActionListener(e -> {
             File selectedFile = fileChooser.getSelectedFile();
             String fullFileName = (selectedFile == null) ? (null) : (selectedFile.getAbsolutePath());
+            String input = new String(FileService.readFromFile(fullFileName));
             String key = keyTextField.getText();
-            String result = Coder.decodeFromFile(fullFileName, key);
+            String result = ENCODER.decode(input, key);
             resultOrInputTextArea.setText(result);
         });
 
