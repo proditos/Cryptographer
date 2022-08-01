@@ -12,6 +12,7 @@ import javax.swing.*;
 public final class Gui extends JFrame {
     private static final Encoder ENCODER = EncoderFactory.getEncoder(EncoderType.XOR);
     private static final String PROGRAM_TITLE = "Cryptographer";
+    private static final String PROGRAM_VERSION = "1.0";
     private static final Font PRIMARY_FONT = new Font("Arial", Font.PLAIN, 20);
     private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 14);
     private static final Color RED = new Color(180, 0, 0);
@@ -30,7 +31,7 @@ public final class Gui extends JFrame {
     private final JScrollPane scrollPane = new JScrollPane(resultOrInputTextArea);
 
     public Gui() throws HeadlessException {
-        super(PROGRAM_TITLE);
+        super(PROGRAM_TITLE + " " + PROGRAM_VERSION);
         this.setBounds(600, 200, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
