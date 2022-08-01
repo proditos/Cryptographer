@@ -123,9 +123,10 @@ public final class Gui extends JFrame {
             String input = resultOrInputTextArea.getText();
             String key = keyTextField.getText();
             String result = ENCODER.encode(input, key);
-            FileService.writeToFile(result.getBytes(Charset.forName("koi8")));
-            if (!"".equals(keyTextField.getText()))
+            if (!"".equals(keyTextField.getText()) && !"".equals(resultOrInputTextArea.getText())) {
+                FileService.writeToFile(result.getBytes(Charset.forName("koi8")));
                 resultOrInputTextArea.setText("");
+            }
         });
 
         decodeButton.addActionListener(e -> {

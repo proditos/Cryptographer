@@ -27,6 +27,8 @@ public final class FileService {
 
     public static byte[] readFromFile(String fullFileName) {
         byte[] result = new byte[0];
+        if (fullFileName == null)
+            return result;
         try {
             result = Files.readAllBytes(Paths.get(fullFileName));
         } catch (IOException e) {
