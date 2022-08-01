@@ -5,8 +5,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author Vladislav Konovalov
@@ -22,10 +23,22 @@ public final class FileService {
     private FileService() {}
 
     public static void writeToFile(byte[] data) {
+        String fileName = ENCRYPTED_FILE_NAME + "." + ENCRYPTED_FILE_EXTENSION;
+        try {
+            Files.write(Paths.get(fileName), data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static byte[] readFromFile(String fullFileName) {
-        return new byte[0];
+        byte[] result = new byte[0];
+        try {
+            result = Files.readAllBytes(Paths.get(fullFileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static Image getApplicationImage() {
@@ -44,9 +57,5 @@ public final class FileService {
 
     public static FileFilter getFileFilter() {
         return new FileNameExtensionFilter(ENCRYPTED_FILE_DESCRIPTION, ENCRYPTED_FILE_EXTENSION);
-    }
-
-    public static String getEncryptedFileNameWithExtension() {
-        return ENCRYPTED_FILE_NAME + "." + ENCRYPTED_FILE_EXTENSION;
     }
 }
