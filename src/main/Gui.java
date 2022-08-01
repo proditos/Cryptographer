@@ -3,6 +3,7 @@ package main;
 import main.encoder.*;
 import java.awt.*;
 import java.io.File;
+import java.nio.charset.Charset;
 import javax.swing.*;
 
 /**
@@ -122,13 +123,15 @@ public final class Gui extends JFrame {
             String input = resultOrInputTextArea.getText();
             String key = keyTextField.getText();
             String result = ENCODER.encode(input, key);
-            FileService.writeToFile(result.getBytes());
+            FileService.writeToFile(result.getBytes(Charset.forName("koi8")));
+            if (!"".equals(keyTextField.getText()))
+                resultOrInputTextArea.setText("");
         });
 
         decodeButton.addActionListener(e -> {
             File selectedFile = fileChooser.getSelectedFile();
             String fullFileName = (selectedFile == null) ? (null) : (selectedFile.getAbsolutePath());
-            String input = new String(FileService.readFromFile(fullFileName));
+            String input = new String(FileService.readFromFile(fullFileName), Charset.forName("koi8"));
             String key = keyTextField.getText();
             String result = ENCODER.decode(input, key);
             resultOrInputTextArea.setText(result);
