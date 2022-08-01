@@ -21,7 +21,7 @@ public final class Gui extends JFrame {
     private final JLabel fileLabel = new JLabel("File:");
     private final JLabel fileStatusLabel = new JLabel("No file selected");
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
-    private final JButton chooseFileButton = new JButton(" Select file", FileService.getFolderIcon());
+    private final JButton chooseFileButton = new JButton("Select file ...");
     private final JButton encodeButton = new JButton("Encode");
     private final JButton decodeButton = new JButton("Decode");
     private final JTextField keyTextField = new JTextField();
@@ -34,7 +34,6 @@ public final class Gui extends JFrame {
         this.setBounds(600, 200, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setIconImage(FileService.getApplicationImage());
 
         Container container = this.getContentPane();
         initContainer(container);
@@ -74,6 +73,7 @@ public final class Gui extends JFrame {
         constraints.gridwidth = 1;
         constraints.insets = new Insets(0, 20, 10, 10);
         chooseFileButton.setFont(PRIMARY_FONT);
+        chooseFileButton.setPreferredSize(new Dimension(162, 40));
         container.add(chooseFileButton, constraints);
 
         constraints.gridx = 1;
