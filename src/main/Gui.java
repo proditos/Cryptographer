@@ -29,7 +29,7 @@ public final class Gui extends JFrame {
 
     public Gui() throws HeadlessException {
         super(PROGRAM_TITLE);
-        this.setBounds(0, 0, 400, 600);
+        this.setBounds(600, 200, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setIconImage(FileService.getApplicationImage());
