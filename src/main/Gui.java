@@ -96,6 +96,8 @@ public final class Gui extends JFrame {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(0, 20, 10, 20);
         resultOrInputTextArea.setFont(SECONDARY_FONT);
+        resultOrInputTextArea.setLineWrap(true);
+        resultOrInputTextArea.setWrapStyleWord(true);
         resultOrInputTextArea.setMargin(new Insets(5, 5, 5, 5));
         container.add(scrollPane, constraints);
 
