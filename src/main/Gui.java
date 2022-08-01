@@ -24,7 +24,7 @@ public final class Gui extends JFrame {
     private final JButton encodeButton = new JButton("Encode");
     private final JButton decodeButton = new JButton("Decode");
     private final JTextField keyTextField = new JTextField();
-    private final JTextArea resultOrInputTextArea = new JTextArea(17, 25);
+    private final JTextArea resultOrInputTextArea = new JTextArea(16, 25);
     private final JFileChooser fileChooser = new JFileChooser();
     private final JScrollPane scrollPane = new JScrollPane(resultOrInputTextArea);
 
