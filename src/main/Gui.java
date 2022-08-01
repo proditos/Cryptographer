@@ -21,7 +21,7 @@ public final class Gui extends JFrame {
     private final JLabel fileStatusLabel = new JLabel("No file selected");
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
     private final JButton chooseFileButton = new JButton(" Select file", FileService.getFolderIcon());
-    private final JButton codeButton = new JButton("Code");
+    private final JButton codeButton = new JButton("Encode");
     private final JButton decodeButton = new JButton("Decode");
     private final JTextField keyTextField = new JTextField();
     private final JTextArea resultOrInputTextArea = new JTextArea(15, 25);
