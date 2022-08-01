@@ -12,7 +12,7 @@ public final class Gui extends JFrame {
     private static final Encoder ENCODER = EncoderFactory.getEncoder(EncoderType.XOR);
     private static final String PROGRAM_TITLE = "Cryptographer";
     private static final Font PRIMARY_FONT = new Font("Arial", Font.PLAIN, 20);
-    private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 16);
+    private static final Font SECONDARY_FONT = new Font("Arial", Font.PLAIN, 14);
     private static final Color RED = new Color(180, 0, 0);
     private static final Color GREEN = new Color(0, 180, 0);
 
@@ -24,7 +24,7 @@ public final class Gui extends JFrame {
     private final JButton codeButton = new JButton("Encode");
     private final JButton decodeButton = new JButton("Decode");
     private final JTextField keyTextField = new JTextField();
-    private final JTextArea resultOrInputTextArea = new JTextArea(15, 25);
+    private final JTextArea resultOrInputTextArea = new JTextArea(17, 25);
     private final JFileChooser fileChooser = new JFileChooser();
     private final JScrollPane scrollPane = new JScrollPane(resultOrInputTextArea);
 
