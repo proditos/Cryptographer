@@ -133,7 +133,7 @@ public final class Gui extends JFrame {
 
         chooseFileButton.addActionListener(e -> {
             fileChooser.setDialogTitle("Select encrypted file");
-            fileChooser.setFileFilter(FileService.getFilter());
+            fileChooser.setFileFilter(FileService.getFileFilter());
             int option = fileChooser.showOpenDialog(this);
             if (option == JFileChooser.APPROVE_OPTION) {
                 fileStatusLabel.setText("File is selected");

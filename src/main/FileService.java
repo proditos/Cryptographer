@@ -42,7 +42,7 @@ public final class FileService {
         return new ImageIcon(FOLDER_ICON_PATH);
     }
 
-    public static FileFilter getFilter() {
+    public static FileFilter getFileFilter() {
         return new FileNameExtensionFilter(ENCRYPTED_FILE_DESCRIPTION, ENCRYPTED_FILE_EXTENSION);
     }
 
