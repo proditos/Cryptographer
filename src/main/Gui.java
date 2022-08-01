@@ -21,7 +21,7 @@ public final class Gui extends JFrame {
     private final JLabel fileStatusLabel = new JLabel("No file selected");
     private final JLabel resultOrInputLabel = new JLabel("Result or input:");
     private final JButton chooseFileButton = new JButton(" Select file", FileService.getFolderIcon());
-    private final JButton codeButton = new JButton("Encode");
+    private final JButton encodeButton = new JButton("Encode");
     private final JButton decodeButton = new JButton("Decode");
     private final JTextField keyTextField = new JTextField();
     private final JTextArea resultOrInputTextArea = new JTextArea(17, 25);
@@ -104,9 +104,9 @@ public final class Gui extends JFrame {
         constraints.gridwidth = 1;
         constraints.fill = GridBagConstraints.NONE;
         constraints.insets = new Insets(0, 20, 16, 5);
-        codeButton.setFont(PRIMARY_FONT);
-        codeButton.setPreferredSize(new Dimension(167, 40));
-        container.add(codeButton, constraints);
+        encodeButton.setFont(PRIMARY_FONT);
+        encodeButton.setPreferredSize(new Dimension(167, 40));
+        container.add(encodeButton, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 6;
@@ -116,7 +116,7 @@ public final class Gui extends JFrame {
         decodeButton.setPreferredSize(new Dimension(167, 40));
         container.add(decodeButton, constraints);
 
-        codeButton.addActionListener(e -> {
+        encodeButton.addActionListener(e -> {
             String input = resultOrInputTextArea.getText();
             String key = keyTextField.getText();
             String result = ENCODER.encode(input, key);
