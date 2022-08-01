@@ -1,4 +1,4 @@
-# Cryptographer
+# Cryptographer 1.0
 
 A simple text encryptor based on the bitwise XOR operation.
 
